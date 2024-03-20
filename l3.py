@@ -42,6 +42,8 @@ def WV_Function(pssh, lic_url, cert_b64=None):
 	signature = cdm.hash_object
 # basic, mostly sites works
 	responses.append(requests.post(url=lic_url, headers=headers.headers, data=raw_request, params=params))
+# RTL+ support
+	responses.append(requests.post(url=lic_url, headers=headers.headers, data='\b\x04', params=params))
 # some another sites support
 	responses.append(requests.post(url=lic_url, headers=headers.headers, params=params, 
 		json={
